@@ -1,0 +1,13 @@
+data_encoding/3D_meta_json
+data_encoding/dxf_data 
+data_encoding/inference_data
+data_encoding/line_only_3D_seq
+data_encoding/line_only_3D_seq_matched
+data_encoding/line_only_3D_seq_processed_clipped
+data_encoding/line_only_3D_seq_processed_clipped (check)
+data_encoding/line_only_step
+data_encoding/step_files
+data_encoding/step_project_npy
+data_encoding/temp
+data_encoding/tokenized_3D_sequences
+data_encoding/train
