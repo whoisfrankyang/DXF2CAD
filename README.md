@@ -1,34 +1,54 @@
-An end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format
-using parametric sequence modeling. 
+# DXF2CAD 
+An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format using parametric sequence modeling. 
 
-## Dataset 
+Due to data limitation, especially in the lack of blueprint and 3D CAD pairs, we transforms STEP files into orthographic views and then into vector-encoded features for the purpose of training. 
+Then during inference stage, we extract entities from DXF files and store the entities into vector-encoded 
+features in a similar fashion. 
+
+## Contributions: 
+  - A novel end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD in STEP format, including DXF entity extraction, a foundation model that transforms orthographic views into CAD parametric sequences, and a CAD rendering script. 
+  - A dataset with (orthographic views and vector-encoded parametric sequence) for model training. 
+  - A script for generating orthographic views from 3D CAD.
+  - A foundation model for transforming orthographic views into CAD parametric sequences. 
+
+## Training Data Preprocessing and Encoding (DXF2Vec) Workflow:
+1. `seq_extractor.py`: A curve entity filter. Currently, filters raw 3D CAD json files with only Line and Extrusion.
+2. `seq_processor.py`: process the Line-Extrusion-only 3D CAD json files to remove negative extrusion distances, shift coordinates, determine extrusion direction, and clip small line length or large coordinate values.
+3. `seq2npy.py`: convert the processed 3D CAD json files into vector sequence for training.
+4. `file_matcher.py`: match the processed seq json files with the step files. 
+5. `step_project.py`: using functions defined in `orthographic_projection.py`, project the 3D CAD step files into 6 orthographic views. 
+
+Final training data:
+X: curve features of 2D orthographic views
+Y: vector-encoded construction sequence of 3D CAD
+
+Helpers:
+- `seq_stats.py`: perform some statistic analysis on the processed 3D CAD json files.
+- `step_stats.py`: perform some statistic analysis on the 3D CAD step files. 
+- `file_matcher.py`: match files between two folders based on specified mode.
+
+## Model Training (Vec2Seq)
+- `model.py`: define model architecture.
+- `dataset.py`: define logics for data augmentation, data validity check, and data padding
+- `train.py`: define training logic and hyperparameters. 
+- `utils.py`: quantization functions
+
+## Model Inference (DXF2CAD Deployment Pipeline)
+
+- `feature_encode.py`: extract features from curve entities in DXF files and store the features in vector-encoded entities. Using the Union-Find clustering algorithm in `clustering.py` to produce cluster labels on different orthographic view in a blueprint. 
+- `inference.py`:
+- `seq2CAD.py`:
+
+## Raw Dataset 
 Autodesk Reconstruction Dataset: 
  - 3D CAD models (.STEP)
  - Raw 3D CAD sequences (.JSON)
-## Training Data Preprocessing and Encoding (DXF2Vec)
-Design Automation: a semi-automation script leveraging the Autodesk CAD2Design feature to generate 2D blueprints from STEP files. 
 
-1. seq_extractor.py: filter raw 3D CAD json files with only Line and Extrusion.
-2. seq_processor.py: process the LE-only 3D CAD json files to remove negative extrusion distances, shift coordinates, determine extrusion direction, and clip small line length or large coordinate values.
-3. seq2npy.py: convert the processed 3D CAD json files into vector sequence for training.
-4. file_matcher.py: match the processed seq files with the step files. 
-5. step_project.py: using functions defined in orthographic_projection.py, project the 3D CAD step files into 6 orthographic views. 
+## Model Checkpoint:
+https://drive.google.com/drive/folders/1tG59lJtayAfvI42L1VXMiYu0qd7chHQY?usp=share_link
 
-Final training data:
-X: generated orthographic views 
-Y: vector-encoded construction sequence
 
-Helpers:
-seq_stats.py: perform some basic statistics and analysis on the processed 3D CAD json files.
-step_stats.py: perform some basic statistics and analysis on the 3D CAD step files. 
-file_matcher.py: match files between two folders based on specified mode.
+Interested for futher collaboration? Please contact me at: 
+- Email: by93@cornell.edu
+- LinkedIn: https://www.linkedin.com/in/bohan-yang-b42959220/
 
-## Model Training (Vec2Seq)
-model.py: define model architecture.
-dataset.py: define logics for data augmentation, data validity check, and data padding
-train.py: define training logic and hyperparameters. 
-utils.py: quantization functions
-
-## Model Inference 
-model checkpoint( 01082503_checkpoint): contains best_model.pt, config.json, and training_history.csv
-## CAD Generation (Seq2CAD)
