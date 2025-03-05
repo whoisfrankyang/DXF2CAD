@@ -2,11 +2,11 @@
 An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format using parametric sequence modeling. 
 
 ![Example of DXF-to-CAD](README_DXF2CAD_demo.png)
-
+An example of DXF to CAD where I input a DXF file and the pipeline outputs a STEP file. 
 ![Inference flowmap](README_inference_flowmap.png)
-
-![Training flowmap](README_inference_flowmap.png)
-
+The inference flowmap
+![Training flowmap](README_training_flowmap.png)
+The training and data preparation flowmap
 
 
 
