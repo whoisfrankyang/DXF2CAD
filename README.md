@@ -1,9 +1,18 @@
 # DXF2CAD 
 An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format using parametric sequence modeling. 
 
+![Example of DXF-to-CAD](README_DXF2CAD_demo.png)
+
+![Inference flowmap](README_inference_flowmap.png)
+
+![Training flowmap](README_inference_flowmap.png)
+
+
+
+
+
 Due to data limitation, especially in the lack of blueprint and 3D CAD pairs, we transforms STEP files into orthographic views and then into vector-encoded features for the purpose of training. 
-Then during inference stage, we extract entities from DXF files and store the entities into vector-encoded 
-features in a similar fashion. 
+Then during inference stage, we extract entities from DXF files and store the entities into vector-encoded features in a similar fashion. 
 
 ## Contributions: 
   - A novel end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD in STEP format, including DXF entity extraction, a foundation model that transforms orthographic views into CAD parametric sequences, and a CAD rendering script. 
@@ -34,7 +43,6 @@ Helpers:
 - `utils.py`: quantization functions
 
 ## Model Inference (DXF2CAD Deployment Pipeline)
-
 - `feature_encode.py`: extract features from curve entities in DXF files and store the features in vector-encoded entities. Using the Union-Find clustering algorithm in `clustering.py` to produce cluster labels on different orthographic view in a blueprint. 
 - `inference.py`:
 - `seq2CAD.py`:
