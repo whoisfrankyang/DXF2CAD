@@ -1,12 +1,20 @@
 # DXF2CAD 
 An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format using parametric sequence modeling. 
 
+
+An example of DXF to CAD where I input a DXF file and the pipeline outputs a STEP file:
 ![Example of DXF-to-CAD](README_DXF2CAD_demo.png)
-An example of DXF to CAD where I input a DXF file and the pipeline outputs a STEP file. 
+
+
+
+The inference flowmap:
 ![Inference flowmap](README_inference_flowmap.png)
-The inference flowmap
+
+
+
+The training and data preparation flowmap:
 ![Training flowmap](README_training_flowmap.png)
-The training and data preparation flowmap
+
 
 
 
@@ -53,7 +61,7 @@ Autodesk Reconstruction Dataset:
  - Raw 3D CAD sequences (.JSON)
 
 ## Model Checkpoint:
-https://drive.google.com/drive/folders/1tG59lJtayAfvI42L1VXMiYu0qd7chHQY?usp=share_link
+checkpoint available at: https://drive.google.com/drive/folders/1tG59lJtayAfvI42L1VXMiYu0qd7chHQY?usp=share_link
 
 
 Interested for futher collaboration? Please contact me at: 
