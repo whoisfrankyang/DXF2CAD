@@ -1,6 +1,3 @@
-# Copyright (c) 2024 Pixelate Inc. All rights reserved.
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
 # Author: Bohan Yang (Jan 3, 2025)
 
 import json
@@ -49,33 +46,6 @@ def process_single_json(input_path):
                         "start": (start_point_data["x"], start_point_data["y"], start_point_data["z"]),
                         "end": end_point
                     })
-                # # Arc: (center, radius, start angle, end angle)
-                # elif curve["type"] == "SketchArc":
-                #     start_point_data = entity["points"][curve["start_point"]]
-                #     end_point_data = entity["points"][curve["end_point"]]
-                #     center_point_data = entity["points"][curve["center_point"]]
-                #     radius = curve["radius"]
-                #     start_angle = curve["start_angle"]
-                #     end_angle = curve["end_angle"]
-                #     start_point = start_point or (start_point_data["x"], start_point_data["y"], start_point_data["z"])
-                #     end_point = (end_point_data["x"], end_point_data["y"], end_point_data["z"])
-                #     construction_sequence.append({
-                #         "command": "Arc",
-                #         "center": (center_point_data["x"], center_point_data["y"], center_point_data["z"]),
-                #         "radius": radius,
-                #         "start angle": start_angle,
-                #         "end angle": end_angle
-                #     })
-                # # Circle
-                # elif curve["type"] == "SketchCircle":
-                #     center_point_data = entity["points"][curve["center_point"]]
-                #     radius = curve["radius"]
-                #     construction_sequence.append({
-                #         "command": "Circle",
-                #         "center": (center_point_data["x"], center_point_data["y"], center_point_data["z"]),
-                #         "radius": radius
-                #     })
-                # add an else statement. If other types, skip over the entire file 
                 else:
                     print(f"Skipping file due to unsupported curve type: {curve['type']}")
                     return None  # Return None to indicate file should be skipped

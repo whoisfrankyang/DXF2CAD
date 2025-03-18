@@ -1,6 +1,3 @@
-# Copyright (c) 2024 Pixelate Inc. All rights reserved.
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
 # Author: Bohan Yang (Jan 3, 2025)
 
 import os
@@ -28,7 +25,6 @@ def round_coords(value, digits=2):
     """Round a number or tuple of numbers to specified digits"""
     if isinstance(value, tuple):
         return tuple(round(x, digits) for x in value)
-    # return round(value, digits)
     return value
 
 def get_step_unit(step_reader):
@@ -405,20 +401,11 @@ def plot_projection(visible_lines, hidden_lines, visible_circles, hidden_circles
 
 def count_solids(shape):
     """Count number of solid bodies in a shape"""
-    # Method 1: Using TopExp_Explorer
     explorer = TopExp_Explorer(shape, TopAbs_SOLID)
     count = 0
     while explorer.More():
         count += 1
         explorer.Next()
-    
-    # Method 2: Alternative using TopoDS_Iterator (uncomment if needed)
-    # iterator = TopoDS_Iterator(shape)
-    # count = 0
-    # while iterator.More():
-    #     if iterator.Value().ShapeType() == TopAbs_SOLID:
-    #         count += 1
-    #     iterator.Next()
     
     return count
 
@@ -432,7 +419,6 @@ def load_step_file(step_path):
     
     # Get unit scale factor from STEP file
     unit_scale = get_step_unit(step_reader)
-    # print(f"Unit scale factor: {unit_scale}")
     
     step_reader.TransferRoots()
     shape = step_reader.OneShape()
@@ -514,7 +500,6 @@ def get_projected_edges(shape, view_name, save_path=None):
     return visible_lines, hidden_lines
 
 def main():
-    # Adjust this path to point to your STEP file
     step_file_path = "2D_data_preprocess/data/line_only_step/20241_6bced5ac_0000.step"
 
     if not os.path.exists(step_file_path):
@@ -571,17 +556,8 @@ def main():
         visible_lines, visible_circles = extract_shapes(visible_edges, unit_scale, view_name)
         hidden_lines, hidden_circles = extract_shapes(hidden_edges, unit_scale, view_name)
 
-        # Remove overlapping hidden curves
-        # print("\nBefore overlap removal:")
-        # print(f"  Hidden Lines: {len(hidden_lines)}")
-        # print(f"  Hidden Circles: {len(hidden_circles)}")
-
         hidden_lines, hidden_circles = remove_overlapping_curves(
             visible_lines, hidden_lines, visible_circles, hidden_circles)
-
-        # print("\nAfter overlap removal:")
-        # print(f"  Hidden Lines: {len(hidden_lines)}")
-        # print(f"  Hidden Circles: {len(hidden_circles)}")
 
         # Print results
         print(f"\nVisible Lines ({len(visible_lines)}):")

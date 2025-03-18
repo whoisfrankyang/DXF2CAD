@@ -1,6 +1,3 @@
-# Copyright (c) 2024 Pixelate Inc. All rights reserved.
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
 # Author: Bohan Yang (Jan 3, 2025)
 
 import os
@@ -127,7 +124,7 @@ def plot_distributions(x_ranges, y_ranges, z_ranges):
     plt.show()
 
 if __name__ == "__main__":
-    folder_path = "2D_data_preprocess/data/line_only_3D_seq_processed_clipped"
-    # x_ranges, y_ranges, z_ranges = analyze_step_files(folder_path)
-    # print_range_counts(x_ranges, y_ranges, z_ranges)
-    # plot_distributions(x_ranges, y_ranges, z_ranges) 
+    folder_path = "intermediate_data/line_only_3D_seq_processed_clipped"
+    x_ranges, y_ranges, z_ranges = analyze_step_files(folder_path)
+    print_range_counts(x_ranges, y_ranges, z_ranges)
+    plot_distributions(x_ranges, y_ranges, z_ranges) 

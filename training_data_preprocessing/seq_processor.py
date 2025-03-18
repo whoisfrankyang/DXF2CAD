@@ -1,6 +1,3 @@
-# Copyright (c) 2024 Pixelate Inc. All rights reserved.
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
 # Author: Bohan Yang (Jan 3, 2025)
 
 """

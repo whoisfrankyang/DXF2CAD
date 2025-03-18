@@ -22,18 +22,18 @@ The training and data preparation flowmap:
 Due to data limitation, especially in the lack of blueprint and 3D CAD pairs, we transforms STEP files into orthographic views and then into vector-encoded features for the purpose of training. 
 Then during inference stage, we extract entities from DXF files and store the entities into vector-encoded features in a similar fashion. 
 
+
 ## Contributions: 
   - A novel end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD in STEP format, including DXF entity extraction, a foundation model that transforms orthographic views into CAD parametric sequences, and a CAD rendering script. 
   - A dataset with (orthographic views and vector-encoded parametric sequence) for model training. 
   - A script for generating orthographic views from 3D CAD.
   - A foundation model for transforming orthographic views into CAD parametric sequences. 
 
-## Training Data Preprocessing and Encoding (DXF2Vec) Workflow:
-1. `seq_extractor.py`: A curve entity filter. Currently, filters raw 3D CAD json files with only Line and Extrusion.
-2. `seq_processor.py`: process the Line-Extrusion-only 3D CAD json files to remove negative extrusion distances, shift coordinates, determine extrusion direction, and clip small line length or large coordinate values.
-3. `seq2npy.py`: convert the processed 3D CAD json files into vector sequence for training.
-4. `file_matcher.py`: match the processed seq json files with the step files. 
-5. `step_project.py`: using functions defined in `orthographic_projection.py`, project the 3D CAD step files into 6 orthographic views. 
+## Training Data Preprocessing Generation:
+1. `data_pipeline.py`: runs the entire data generation pipeline. Input should be the STEP files and JSON sequence files from the Fusion 360 Reconstruction dataset. But of coruse, this pipeline can be accomodated to other datasets where there exists only 3D STEP files but not the corresponding orthographic viewers.
+
+Below is a detailed flowmap for our data generation pipeline:
+![Data Generation Pipeline flowmap](README_data_generation_pipeline.png)
 
 Final training data:
 X: curve features of 2D orthographic views

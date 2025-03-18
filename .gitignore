@@ -11,5 +11,8 @@ training_data_preprocessing/step_project_npy
 training_data_preprocessing/temp
 training_data_preprocessing/tokenized_3D_sequences
 training_data_preprocessing/train
+training_data_preprocessing/intermediate_data
+training_data_preprocessing/train_old
+
 archived
 01082503_checkpoint
