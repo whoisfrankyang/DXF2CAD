@@ -1,5 +1,5 @@
 # DXF2CAD 
-An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD models in STEP format using parametric sequence modeling. 
+Developing a generative AI framework that learns from 2D DXF blueprints to construct accurate, editable 3D CAD models in STEP format in seconds.
 
 
 An example of DXF to CAD where I input a DXF file and the pipeline outputs a STEP file:
