@@ -233,7 +233,9 @@ def process_json_files(input_folder, output_folder, clip_length_range=True, clip
     errors = 0
     
     for filename in os.listdir(input_folder):
+        print(f"Processing: {filename}")
         if filename.endswith('_extracted.json'):
+            print(f"Processing: {filename}")
             input_path = os.path.join(input_folder, filename)
             output_path = os.path.join(output_folder, filename)
             
@@ -283,8 +285,8 @@ def process_json_files(input_folder, output_folder, clip_length_range=True, clip
     print(f"Files with errors: {errors}")
 
 if __name__ == "__main__":
-    input_folder = "2D_data_preprocess/data/line_only_3D_seq_matched"
-    output_folder = "2D_data_preprocess/data/line_only_3D_seq_processed_clipped"
+    input_folder = "intermediate_data/line_only_3D_seq"
+    output_folder = "intermediate_data/line_only_3D_seq_processed_clipped"
     
     # Set clipping flags
     clip_length_range = True  # Skip files with any length < 1

@@ -56,7 +56,7 @@ def process_sequences():
     print("\nStep 3: Processing sequences...")
     
     # First process the sequences
-    input_folder = "intermediate_data/line_only_3D_seq_matched"
+    input_folder = "intermediate_data/line_only_3D_seq"
     output_folder = "intermediate_data/line_only_3D_seq_processed_clipped"
     seq_processor.process_json_files(
         input_folder, output_folder,

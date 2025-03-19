@@ -79,6 +79,8 @@ def match_files(folder1: str, folder2: str,
     """
     # Get sets of base filenames from both folders
     files1, files2 = get_matching_files(folder1, folder2, extensions1, extensions2, suffixes1, suffixes2)
+    print(f"Files in folder1: {files1}")
+    print(f"Files in folder2: {files2}")
     
     # Determine which files to keep based on mode
     if mode == MatchMode.MATCH_2_TO_1:
@@ -124,31 +126,17 @@ def match_files(folder1: str, folder2: str,
 
 if __name__ == "__main__":
     # Example usage:
-    folder1 = "2D_data_preprocess/data/step_project_npy"
-    folder2 = "2D_data_preprocess/data/tokenized_3D_sequences"
-    output_dir1 = "2D_data_preprocess/data/train/input"
-    output_dir2 = "2D_data_preprocess/data/train/output"
+    input_folder = "intermediate_data/line_only_3D_seq"
+    step_folder = "step_files"
+    output_folder = "intermediate_data/line_only_step"
     
-    # Specify file extensions to match
-    extensions1 = ['.npy']  # For folder1
-    extensions2 = ['.npy']  # For folder2
-    
-    # Specify suffixes to remove when matching
-    suffixes1 = []  # For folder1
-    suffixes2 = []  # For folder2
-    
-    # Choose matching mode
-    mode = MatchMode.MATCH_BOTH
-    
-    # Perform matching
+    # Match files and copy matching STEP files
     count1, count2 = match_files(
-        folder1, folder2,
-        output_dir1, output_dir2,
-        extensions1, extensions2,
-        mode,
-        suffixes1, suffixes2
+        input_folder, step_folder,
+        None, output_folder,
+        ['.json'], ['.step', '.stp'],
+        MatchMode.MATCH_2_TO_1,
+        ['_extracted'], []
     )
     
-    print(f"\nMatching complete:")
-    print(f"Files in output1: {count1}")
-    print(f"Files in output2: {count2}") 
+    print(f"Matched {count2} STEP files")
