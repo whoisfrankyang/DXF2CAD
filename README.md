@@ -22,10 +22,10 @@ Due to limited data—especially the scarcity of corresponding blueprint and 3D 
 
 
 ## Contributions: 
-  - A novel end-to-end pipeline for converting 2D blueprints in DXF format to 3D CAD in STEP format, including DXF entity extraction, a foundation model that transforms orthographic views into CAD parametric sequences, and a CAD rendering script. 
-  - A paired up dataset with (orthographic views and vector-encoded parametric sequence) for model training. 
-  - A data generation pipeline to generate 2D-3D paired data using only 3D STEP files. 
-  - A foundation model for transforming orthographic views into CAD parametric sequences. 
+  - A novel **end-to-end pipeline** for converting 2D blueprints in DXF format to 3D CAD in STEP format, including DXF entity extraction, a foundation model that transforms orthographic views into CAD parametric sequences, and a CAD rendering script. 
+  - A **paired up dataset** with (orthographic views and vector-encoded parametric sequence) for model training. 
+  - A **data generation pipeline** to generate 2D-3D paired data using only 3D STEP files. 
+  - A **foundation model** for transforming orthographic views into CAD parametric sequences. 
 
 ## Training Data Preprocessing Generation (training_data_preprocessing):
 1. `data_pipeline.py`: runs the entire data generation pipeline. Input should be the STEP files and JSON sequence files from the Fusion 360 Reconstruction dataset. But of coruse, this pipeline can be accommodated to other datasets where there exists only 3D STEP files but not the corresponding orthographic views.
