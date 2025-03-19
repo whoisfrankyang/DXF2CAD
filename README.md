@@ -3,17 +3,17 @@ An AI-powered end-to-end pipeline for converting 2D blueprints in DXF format to 
 
 
 An example of DXF to CAD where I input a DXF file and the pipeline outputs a STEP file:
-![Example of DXF-to-CAD](README_DXF2CAD_demo.png)
+![Example of DXF-to-CAD](Images/README_DXF2CAD_demo.png)
 
 
 
 The inference flowmap:
-![Inference flowmap](README_inference_flowmap.png)
+![Inference flowmap](Images/README_inference_flowmap.png)
 
 
 
 The training and data preparation flowmap:
-![Training flowmap](README_training_flowmap.png)
+![Training flowmap](Images/README_training_flowmap.png)
 
 
 
@@ -35,7 +35,7 @@ Due to limited data—especially the scarcity of corresponding blueprint and 3D 
     - `python3 data_pipeline.py`
 
 Below is a detailed flowmap for our data generation pipeline:
-![Data Generation Pipeline flowmap](README_data_generation_pipeline.png)
+![Data Generation Pipeline flowmap](Images/README_data_generation_pipeline.png)
 
 Final training data:
 X: curve features of 2D orthographic views

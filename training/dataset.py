@@ -490,7 +490,7 @@ def create_dataloaders(config, epoch=0):
     
     # Create datasets with their respective files
     train_dataset = CADDataset(
-        data_path='data',
+        data_path='train',
         max_input_length=config['max_input_length'],
         max_output_length=config['max_output_length'],
         input_vec_dim=config['input_dim'],
@@ -502,7 +502,7 @@ def create_dataloaders(config, epoch=0):
     )
     
     val_dataset = CADDataset(
-        data_path='data',
+        data_path='train',
         max_input_length=config['max_input_length'],
         max_output_length=config['max_output_length'],
         input_vec_dim=config['input_dim'],
