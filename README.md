@@ -1,4 +1,4 @@
-# DXF2CAD 
+# DXF2CAD: End-to-End 2D Blueprint to 3D CAD Model Conversion
 Developing a generative AI framework that learns from 2D DXF blueprints to construct accurate, editable 3D CAD models in STEP format in seconds.
 
 
